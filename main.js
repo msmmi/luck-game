@@ -80,20 +80,12 @@ Follow the steps
     p2ScoreElm.textContent = p2Score
     if (p1Turn) {
       p1BtnElm.removeAttribute('disabled')
+      p2BtnElm.setAttribute('disabled', 'disabled')
     } else {
+      p2BtnElm.removeAttribute('disabled')
       p1BtnElm.setAttribute('disabled', 'disabled')
     }
 
-    if (p2Turn) {
-      p2BtnElm.removeAttribute('disabled')
-    } else {
-      p2BtnElm.setAttribute('disabled', 'disabled')
-    }
-    // if (!p2Turn) {
-    //   p2BtnElm.setAttribute('disabled', 'disabled')
-    // } else {
-    //   p2BtnElm.removeAttribute('disabled')
-    // }
     //resetting winner player message
     winPlayerElm.textContent = ''
     //resetting player or player-2 button disabled state

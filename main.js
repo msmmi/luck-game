@@ -159,7 +159,7 @@ Follow the steps
       //DOM Update
       p2ScoreElm.textContent = p2Score;
     }
-    git;
+
     //setting p2 turn false
     p2Turn = false;
     p2BtnElm.setAttribute('disabled', 'disabled');

@@ -16,8 +16,7 @@ Follow the steps
 //IIFE- Immediately Invoked function expression)
 (() => {
   //selection
-  const formElm = document.querySelector('form');
-  const inputElm = document.querySelector('#luck-input');
+
   const winScoreElm = document.querySelector('.lucky-number span');
   const winPlayerElm = document.querySelector('.winner');
   const p1BtnElm = document.querySelector('.p1Btn');
@@ -25,7 +24,6 @@ Follow the steps
   const p1ScoreElm = document.querySelector('.p1');
   const p2ScoreElm = document.querySelector('.p2');
   const resetBtnELm = document.querySelector('#resetBtn');
-  const RandNumber = document.querySelector('#randval');
 
   let p1Score;
   let p2Score;
@@ -70,11 +68,6 @@ Follow the steps
     return isInValid;
   }
 
-  function resetInput() {
-    //reset the input
-    inputElm.value = '';
-  }
-
   function setInitialDOM() {
     winScoreElm.textContent = winScore;
     p1ScoreElm.textContent = p1Score;
@@ -98,42 +91,13 @@ Follow the steps
   }
 
   //handling Submit part
-  formElm.addEventListener('submit', (evt) => {
-    //prevent browser reload
-    evt.preventDefault();
-    //reset the game in case anyone change and submit new number during playing
-    setInitialValues();
-    setInitialDOM();
 
-    //getting the input value
-    const inputVal = Number(inputElm.value);
-
-    const isInValid = validateInput(inputVal);
-
-    if (isInValid) {
-      console.log('some problem');
-      return;
-    }
-    //reset the input
-    resetInput();
-    //setting data on memory
-    winScore = inputVal;
-    //setting on winning score
-    winScoreElm.textContent = inputVal;
-  });
   // Random value to increase
-  function randomVal() {
-    let num = 3;
-    if (RandNumber.value !== '') {
-      num = Number(RandNumber.value);
-    }
-    return num;
-  }
 
   //Handling players Click
   p1BtnElm.addEventListener('click', (evt) => {
     if (p1Turn && !isGameOver) {
-      p1Score += Math.round(Math.random() * randomVal());
+      p1Score = Math.round(Math.random() * 10);
       p1ScoreElm.textContent = p1Score;
     }
     //setting p1 turn false
@@ -155,7 +119,7 @@ Follow the steps
   p2BtnElm.addEventListener('click', (evt) => {
     if (p2Turn && !isGameOver) {
       //memory data update
-      p2Score += Math.round(Math.random() * randomVal());
+      p2Score = Math.round(Math.random() * 10);
       //DOM Update
       p2ScoreElm.textContent = p2Score;
     }
